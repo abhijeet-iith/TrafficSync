@@ -1,0 +1,37 @@
+# Demand scenarios. Rates are Poisson arrival rates in veh/s per entry link.
+#
+# Rate resolution for an entry link at step t (first match wins):
+#   1. entry_rates  - explicit per-entry rate (entry: auto | link id | {node: i, approach: W})
+#   2. heading_rates - by direction of travel of the entry link (E, W, N, S)
+#   3. profile      - piecewise-linear [[t_s, rate], ...] (constant outside the points)
+#   4. rate         - constant base rate
+# incidents scale the saturation flow of one link by capacity_factor on [start_s, end_s)
+# (0.3 = "reduced by 70%", 0.0 = fully blocked).  link: auto = the internal eastbound link
+# into the intersection closest to the network centre.
+scenarios:
+  D_low:
+    description: low demand on all entries (~180 veh/h each)
+    rate: 0.05
+  D_med:
+    description: medium demand on all entries
+    rate: 0.12
+  D_high:
+    description: near saturation for 2-phase, 1 lane
+    rate: 0.20
+  D_tidal:
+    description: asymmetric rush hour, main (E-W) direction 0.22, cross (N-S) direction 0.06
+    rate: 0.06
+    heading_rates: {E: 0.22, W: 0.22}
+  D_ramp:
+    description: rises linearly low->high over 0-1200 s, holds to 2400 s, falls back by 3600 s
+    profile: [[0, 0.05], [1200, 0.20], [2400, 0.20], [3600, 0.05]]
+  D_incident:
+    description: medium demand, one central link loses 70% of its discharge capacity during 1200-2100 s
+    rate: 0.12
+    incidents:
+      - {link: auto, start_s: 1200, end_s: 2100, capacity_factor: 0.3}
+  D_hotspot:
+    description: one high-demand entry (eastbound, middle row, west edge) on top of light background demand
+    rate: 0.08
+    entry_rates:
+      - {entry: auto, rate: 0.35}

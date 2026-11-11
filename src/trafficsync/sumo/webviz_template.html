@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__ · TrafficSync</title>
+<style>/*LEAFLET_CSS*/</style>
+<style>
+:root{--bg:#0b0f17;--card:rgba(15,20,30,.92);--line:#232b3a;--ink:#e6edf3;--ink2:#9aa7b6;--muted:#6b7686;
+--a:#22d3ee;--b:#f59e0b;--good:#3fb950;--bad:#f85149;--g:#2ea043;--y:#e3b341;--r:#f85149}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:13px/1.35 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+#panes{position:absolute;inset:0 400px 0 0;display:grid;gap:1px;background:var(--line)}
+.pane{position:relative;background:var(--bg);min-width:0;min-height:0}
+.map{position:absolute;inset:0;background:var(--bg)}
+.leaflet-container{background:var(--bg)}
+canvas.overlay{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:450}
+.chip{position:absolute;top:8px;left:8px;transform:none;z-index:600;background:var(--card);border:1px solid var(--line);
+border-radius:999px;padding:5px 12px;font-weight:600;font-size:12px;white-space:nowrap}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.card{position:absolute;z-index:700;background:var(--card);border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(6px)}
+#title{margin-bottom:10px}
+#title h1{margin:0 0 4px;font-size:16px}
+#title .sub{color:var(--ink2);font-size:11.5px}
+#title .sum{margin-top:10px;padding-top:8px;border-top:1px solid var(--line);font-size:12px}
+.big{font-weight:700;font-size:15px}
+.badge{display:inline-block;padding:0 6px;border-radius:6px;font-size:10.5px;font-weight:600;margin-left:4px}
+.badge.good{background:rgba(63,185,80,.18);color:var(--good)}.badge.bad{background:rgba(248,81,73,.18);color:var(--bad)}
+.badge.neu{background:rgba(154,167,182,.15);color:var(--ink2)}
+#views{display:flex;flex-wrap:wrap;gap:3px;margin:4px 0 2px}
+#views button{background:#141a25;border:1px solid var(--line);color:var(--ink2);padding:4px 8px;border-radius:8px;font:inherit;font-size:12px;cursor:pointer}
+#views button.on{background:#1f2633;color:var(--ink);font-weight:600}
+.cmp{display:flex;flex-wrap:wrap;gap:6px 12px}.cmp label{color:var(--ink2);font-size:12px;cursor:pointer}.cmp input{margin-right:5px;vertical-align:-2px}
+.cmp select{width:240px;background:#141a25;color:var(--ink);border:1px solid var(--line);border-radius:7px;font:inherit;padding:4px}
+#side{position:absolute;top:0;right:0;bottom:0;width:400px;overflow-y:auto;background:#0d121b;border-left:1px solid var(--line);padding:14px 14px 18px}
+#side h3{margin:16px 0 8px;font-size:10.5px;letter-spacing:.09em;color:var(--ink2);text-transform:uppercase}
+#side h3:first-child{margin-top:2px}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+td,th{padding:3px 0 3px 4px;text-align:right;font-weight:400;white-space:nowrap;font-size:11.5px}
+td:first-child{white-space:normal}
+.badge{display:block;margin:1px 0 0 auto;width:max-content}
+td:first-child,th:first-child{text-align:left;color:var(--ink2)}
+th{font-size:11px}
+.ca{color:var(--a)}.cb{color:var(--b)}
+canvas.chart{width:100%;height:96px;display:block;border-bottom:1px solid var(--line)}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:4px 10px;color:var(--ink2);font-size:11.5px}
+.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#toggles{left:12px;bottom:78px;padding:10px 12px}
+#toggles label{display:block;margin:3px 0;color:var(--ink2);cursor:pointer;font-size:12px}
+#toggles input{accent-color:var(--a);margin-right:7px;vertical-align:-2px}
+#bar{left:calc((100% - 400px)/2);transform:translateX(-50%);bottom:14px;padding:8px 10px;display:flex;align-items:center;gap:10px;width:min(780px,calc(100% - 430px))}
+#bar button{background:#1a2130;border:1px solid var(--line);color:var(--ink);border-radius:8px;height:32px;min-width:38px;font:600 12px inherit;cursor:pointer}
+#clock{font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap}
+#tl{flex:1;height:32px;cursor:pointer}
+#load{position:absolute;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;background:var(--bg);color:var(--ink2);font-size:14px}
+.note{color:var(--muted);font-size:10.5px;margin-top:8px}
+</style>
+</head>
+<body>
+<div id="load">Decoding recorded runs…</div>
+<div id="panes"></div>
+<div class="card" id="toggles">
+<label><input type="checkbox" id="oBase" checked>Street map (OpenStreetMap)</label>
+<label><input type="checkbox" id="oNight" checked>Night mode</label>
+<label><input type="checkbox" id="oRings" checked>Agent rings</label>
+<label><input type="checkbox" id="oMsg" checked>Messages between agents</label>
+<label><input type="checkbox" id="oQueue" checked>Queues at junctions</label>
+<label><input type="checkbox" id="oSpeed" checked>Colour by speed</label>
+</div>
+<div class="card" id="bar"><button id="bPlay">❚❚</button><button id="bSpeed">4×</button><span id="clock">00:00 / 00:00</span><canvas id="tl"></canvas><button id="bFit" title="Fit map">⤢</button></div>
+<div id="side">
+<div id="title"><h1 id="t1"></h1><div class="sub" id="t2"></div><div class="sum" id="sum"></div></div>
+<div id="views"></div>
+<h3>Shown controllers</h3>
+<div class="cmp" id="cmp"></div>
+<h3>Live</h3>
+<table id="live"></table>
+<h3>Vehicles stopped in the network</h3><canvas class="chart" id="ch1"></canvas>
+<h3>Average waiting time so far (s / vehicle)</h3><canvas class="chart" id="ch2"></canvas>
+<h3>Final result (whole run)</h3><table id="final"></table>
+<div class="note" id="fnote"></div>
+<h3>Legend</h3>
+<div class="legend">
+<span><i class="sw" style="background:var(--g)"></i>Green</span><span><i class="sw" style="background:var(--y)"></i>Amber</span>
+<span><i class="sw" style="background:var(--r)"></i>Red</span><span><i class="sw" style="background:#e6edf3"></i>Car</span>
+<span><i class="sw" style="background:#c084fc"></i>Two-wheeler</span><span><i class="sw" style="background:#ef4444"></i>Bus</span>
+<span><i class="sw" style="background:#60a5fa"></i>Truck</span><span><i class="sw" style="border:2px solid var(--a);border-radius:50%"></i>Agent: green approaches</span>
+<span><i class="sw" style="background:rgba(244,114,182,.6);border-radius:50%"></i>Queue at junction</span><span><i class="sw" style="background:#a78bfa;border-radius:50%"></i>Message</span>
+</div>
+<div class="note">Speed colours: red = stopped, amber = slow, green / cyan = free flow. Basemap © Esri, HERE, Garmin, © OpenStreetMap contributors. Simulation: SUMO; agents: TrafficSync.</div>
+</div>
+<script>/*LEAFLET_JS*/</script>
+<script>
+"use strict";
+const D = /*DATA*/null;
+const S = D.scene, $ = id => document.getElementById(id);
+const VS = 9; // bytes per vehicle record
+const CLS = [{l:4.5,w:1.9,c:"#e6edf3"},{l:2.0,w:0.8,c:"#c084fc"},{l:2.8,w:1.4,c:"#facc15"},{l:11,w:2.5,c:"#ef4444"},{l:8,w:2.4,c:"#60a5fa"}];
+const SIGC = ["#2ea043","#3fb950","#e3b341","#f85149","#8b949e"];
+let runs = {}, view = "all", playing = true, speed = 4, cursor = 0, nF = 0, lastTs = null;
+
+async function inflate(b64){
+  const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  if (typeof DecompressionStream === "undefined") throw new Error("This browser cannot decompress the data (use a current Chrome, Edge or Firefox).");
+  const ds = new Blob([bin]).stream().pipeThrough(new DecompressionStream("deflate"));
+  return new Uint8Array(await new Response(ds).arrayBuffer());
+}
+async function decode(r){
+  const veh = await inflate(r.veh), sig = await inflate(r.sig), q = await inflate(r.queue);
+  const off = [0]; for (const c of r.counts) off.push(off[off.length-1] + c*VS);
+  const nh = S.heads.reduce((s,h)=>s+h.length,0);
+  return Object.assign(r, {vehB: veh, dv: new DataView(veh.buffer), off, sigB: sig, nh, qB: q, nA: S.agents.length, cache:{}});
+}
+function frame(r, f){                       // parsed frame f: Map id -> [x,y,angle,speed,cls]
+  if (r.cache[f]) return r.cache[f];
+  const m = new Map(), a = r.off[f], b = r.off[f+1], dv = r.dv;
+  for (let p = a; p < b; p += VS){
+    m.set(dv.getUint16(p,true), [dv.getInt16(p+2,true)/2, dv.getInt16(p+4,true)/2, dv.getUint8(p+6)*360/256, dv.getUint8(p+7)/10, dv.getUint8(p+8)]);
+  }
+  const keys = Object.keys(r.cache); if (keys.length > 6) delete r.cache[keys[0]];
+  return (r.cache[f] = m);
+}
+
+// ---------------------------------------------------------------- maps
+const geo = S.geo;
+function toLL(x, y){ return geo ? L.latLng(geo[0]+geo[1]*x+geo[2]*y, geo[3]+geo[4]*x+geo[5]*y) : L.latLng(y, x); }
+const bounds = L.latLngBounds([toLL(0,0), toLL(S.extent[0],0), toLL(0,S.extent[1]), toLL(S.extent[0],S.extent[1])]);
+// Basemap: Esri "World Dark/Light Gray" tiles (no API key needed); offline the SUMO roads alone are drawn.
+const TILE = {dark:"https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+              light:"https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"};
+let panes = [], shown = [], syncing = false;
+function mkPane(r){
+  const el = document.createElement("div"); el.className = "pane";
+  el.innerHTML = `<div class="map"></div><canvas class="overlay"></canvas><div class="chip"><i class="dot" style="background:${r.color}"></i>${r.label}</div>`;
+  $("panes").appendChild(el);
+  const m = L.map(el.querySelector(".map"), {crs: geo ? L.CRS.EPSG3857 : L.CRS.Simple, zoomControl:false, attributionControl:false,
+                       zoomSnap:0.25, zoomDelta:0.5, wheelPxPerZoomLevel:90, minZoom: geo ? 12 : -6, maxZoom: geo ? 20 : 6});
+  m.fitBounds(bounds.pad(0.04));
+  const P = {el, map:m, cv: el.querySelector("canvas"), run:r, tiles:null};
+  m.on("move zoom", () => { if (syncing) return; syncing = true;
+    for (const o of panes) if (o !== P) o.map.setView(m.getCenter(), m.getZoom(), {animate:false}); syncing = false; draw(); });
+  return P;
+}
+function setTiles(){
+  for (const P of panes){
+    if (P.tiles) P.map.removeLayer(P.tiles); P.tiles = null;
+    if (!geo || !$("oBase").checked) continue;
+    P.tiles = L.tileLayer($("oNight").checked ? TILE.dark : TILE.light, {maxZoom:20, maxNativeZoom:16}).addTo(P.map);
+  }
+  document.body.style.setProperty("--bg", $("oNight").checked ? "#0b0f17" : "#e9edf2");
+}
+function layout(){
+  const n = panes.filter(P => P.el.style.display !== "none").length;
+  const cols = n <= 1 ? 1 : n <= 2 ? 2 : n <= 4 ? 2 : 3, rows = Math.ceil(n/cols);
+  $("panes").style.gridTemplateColumns = `repeat(${cols}, 1fr)`; $("panes").style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+}
+function resize(){
+  layout();
+  for (const P of panes){
+    const r = P.cv.getBoundingClientRect(), d = window.devicePixelRatio || 1;
+    P.cv.width = Math.max(1, r.width*d); P.cv.height = Math.max(1, r.height*d); P.map.invalidateSize(false);
+  }
+  drawCharts(); draw();
+}
+window.addEventListener("resize", resize);
+
+// ---------------------------------------------------------------- drawing
+function affine(m){        // local metres -> container pixels
+  const p0 = m.latLngToContainerPoint(toLL(0,0)), px = m.latLngToContainerPoint(toLL(100,0)), py = m.latLngToContainerPoint(toLL(0,100));
+  return {ox:p0.x, oy:p0.y, xx:(px.x-p0.x)/100, xy:(px.y-p0.y)/100, yx:(py.x-p0.x)/100, yy:(py.y-p0.y)/100,
+          s: Math.hypot(px.x-p0.x, px.y-p0.y)/100};
+}
+function speedColor(v){ const t = Math.min(1, v/12);
+  if (t < .08) return "#f85149"; if (t < .35) return "#f59e0b"; if (t < .7) return "#a3e635"; return "#22d3ee"; }
+function drawPane(Pn){
+  const r = Pn.run, c = Pn.cv, ctx = c.getContext("2d"), d = window.devicePixelRatio || 1;
+  ctx.setTransform(d,0,0,d,0,0); ctx.clearRect(0,0,c.width,c.height);
+  if (Pn.el.style.display === "none") return;
+  const T = affine(Pn.map), P = (x,y) => [T.ox + T.xx*x + T.yx*y, T.oy + T.xy*x + T.yy*y];
+  const night = $("oNight").checked, base = geo && $("oBase").checked;
+  ctx.lineCap = "round"; ctx.lineJoin = "round";
+  for (const ln of S.lanes){
+    ctx.strokeStyle = night ? (base ? "rgba(140,160,190,.38)" : "#2a3446") : (base ? "rgba(90,105,130,.35)" : "#c3cad6");
+    ctx.lineWidth = Math.max(base ? 1.2 : 1.6, 3.2*T.s); ctx.beginPath();
+    for (let i = 0; i < ln.p.length; i += 2){ const [x,y] = P(ln.p[i], ln.p[i+1]); i ? ctx.lineTo(x,y) : ctx.moveTo(x,y); }
+    ctx.stroke();
+  }
+  const f = Math.min(nF-1, Math.floor(cursor)), a = cursor - f, f2 = Math.min(nF-1, f+1);
+  if ($("oQueue").checked){
+    for (let i = 0; i < S.agents.length; i++){
+      const q = r.qB[f*r.nA + i]; if (!q) continue;
+      const [x,y] = P(...S.agents[i]), rad = Math.max(6, Math.sqrt(q)*7*Math.max(.6, Math.min(2.2, T.s*1.2)));
+      ctx.fillStyle = "rgba(244,114,182,.18)"; ctx.beginPath(); ctx.arc(x,y,rad,0,7); ctx.fill();
+    }
+  }
+  if ($("oMsg").checked && r.comm){
+    const t = r.times[f] + a, ph = (t % 5);
+    for (const [i,j] of S.pairs){
+      const [x1,y1] = P(...S.agents[i]), [x2,y2] = P(...S.agents[j]);
+      ctx.strokeStyle = "rgba(167,139,250,.22)"; ctx.lineWidth = 1; ctx.setLineDash([3,4]);
+      ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke(); ctx.setLineDash([]);
+      if (ph < 1.2){ const u = ph/1.2; ctx.fillStyle = "#a78bfa";
+        for (const [sx,sy,ex,ey] of [[x1,y1,x2,y2],[x2,y2,x1,y1]]){ ctx.beginPath(); ctx.arc(sx+(ex-sx)*u, sy+(ey-sy)*u, 2.6, 0, 7); ctx.fill(); } }
+    }
+  }
+  let h = 0; const sigOff = f*r.nh;
+  for (let i = 0; i < S.heads.length; i++){
+    const [cx,cy] = P(...S.agents[i]), green = []; let anyY = false;
+    for (let k2 = 0; k2 < S.heads[i].length; k2++, h++){
+      const hp = S.heads[i][k2]; if (!hp) continue;
+      const code = r.sigB[sigOff + h], [x,y] = P(hp[0], hp[1]), sz = Math.max(2.2, Math.min(5, 1.2*T.s));
+      ctx.fillStyle = SIGC[code]; ctx.fillRect(x-sz, y-sz, 2*sz, 2*sz);
+      if (code <= 1) green.push(Math.atan2(y-cy, x-cx)); if (code === 2) anyY = true;
+    }
+    if ($("oRings").checked){
+      const R = Math.max(9, Math.min(26, 16*T.s));
+      ctx.lineWidth = 1; ctx.strokeStyle = "rgba(34,211,238,.25)"; ctx.beginPath(); ctx.arc(cx,cy,R,0,7); ctx.stroke();
+      ctx.lineWidth = 3; ctx.strokeStyle = anyY ? "#e3b341" : r.color;
+      for (const ang of green){ ctx.beginPath(); ctx.arc(cx,cy,R,ang-.35,ang+.35); ctx.stroke(); }
+    }
+  }
+  const F1 = frame(r, f), F2 = frame(r, f2), bySpeed = $("oSpeed").checked;
+  for (const [id, v] of F1){
+    let x = v[0], y = v[1], ang = v[2], sp = v[3];
+    const w2 = F2.get(id);
+    if (w2 && f2 !== f){ x += (w2[0]-x)*a; y += (w2[1]-y)*a; ang += (((w2[2]-ang+540)%360)-180)*a; sp += (w2[3]-sp)*a; }
+    const cl = CLS[v[4]] || CLS[0], [px,py] = P(x,y), rad = ang*Math.PI/180;
+    const hx = T.xx*Math.sin(rad) + T.yx*Math.cos(rad), hy = T.xy*Math.sin(rad) + T.yy*Math.cos(rad);
+    const n = Math.hypot(hx,hy) || 1, ux = hx/n, uy = hy/n;
+    ctx.fillStyle = bySpeed ? speedColor(sp) : cl.c;
+    if (T.s*cl.l < 5){ ctx.beginPath(); ctx.arc(px,py,Math.max(2.1, T.s*cl.l/2),0,7); ctx.fill(); continue; }
+    const hl = cl.l*T.s/2, hw = cl.w*T.s/2;
+    ctx.beginPath(); ctx.moveTo(px+ux*hl-uy*hw, py+uy*hl+ux*hw); ctx.lineTo(px+ux*hl+uy*hw, py+uy*hl-ux*hw);
+    ctx.lineTo(px-ux*hl+uy*hw, py-uy*hl-ux*hw); ctx.lineTo(px-ux*hl-uy*hw, py-uy*hl+ux*hw); ctx.closePath(); ctx.fill();
+  }
+}
+function draw(){ if (panes.length) for (const P of panes) drawPane(P); }
+
+// ---------------------------------------------------------------- panels
+const fmt = (v,d=1) => (v === undefined || v === null || Number.isNaN(v)) ? "–" : (+v).toFixed(d);
+const mmss = s => `${String(Math.floor(s/60)).padStart(2,"0")}:${String(Math.floor(s%60)).padStart(2,"0")}`;
+function badge(a, b, lower){
+  if (lower === null || lower === undefined || !isFinite(a) || !isFinite(b) || !b) return "";
+  const p = (a-b)/Math.abs(b)*100, good = lower ? p < 0 : p > 0, cls = Math.abs(p) < 0.5 ? "neu" : (good ? "good" : "bad");
+  return `<span class="badge ${cls}">${p>0?"+":""}${p.toFixed(0)}%</span>`;
+}
+const vis = () => panes.filter(P => P.el.style.display !== "none").map(P => P.run);
+function head(rs){ return `<tr><th></th>${rs.map(r => `<th style="color:${r.color}">${r.short||r.label}</th>`).join("")}</tr>`; }
+function updateStatic(){
+  const R = runs[D.pair[1]], rs = vis();
+  $("t1").textContent = D.title; $("t2").textContent = D.subtitle;
+  const best = rs.filter(r => r !== R).sort((x,y) => x.metrics.mean_delay - y.metrics.mean_delay)[0];
+  $("sum").innerHTML = best ? `Average delay: <span class="big" style="color:${best.color}">${fmt(best.metrics.mean_delay)} s</span> with ${best.label} vs
+     <span class="big" style="color:${R.color}">${fmt(R.metrics.mean_delay)} s</span> with ${R.label} ${badge(best.metrics.mean_delay, R.metrics.mean_delay, true)}` : "";
+  let t = head(rs);
+  for (const [lab, key, unit, lower] of D.rows){
+    if (R.metrics[key] === undefined) continue;
+    const dec = (key === "completed") ? 0 : (key.includes("stops") ? 2 : 1);
+    t += `<tr><td>${lab}${unit?` [${unit}]`:""}</td>${rs.map(r => `<td>${fmt(r.metrics[key],dec)}${r === R ? "" : badge(r.metrics[key], R.metrics[key], lower)}</td>`).join("")}</tr>`;
+  }
+  $("final").innerHTML = t;
+  $("fnote").textContent = `Same vehicles and seed in every run; % = relative to ${R.label}. Delay = time lost vs free flow (SUMO time loss + insertion delay).`;
+  $("views").innerHTML = `<button data-v="all" class="${view==="all"?"on":""}">All side by side</button>` +
+    Object.values(runs).map(r => `<button data-v="${r.key}" class="${view===r.key?"on":""}"><i class="dot" style="background:${r.color}"></i>${r.short||r.label}</button>`).join("");
+  for (const b of $("views").querySelectorAll("button")) b.onclick = () => setView(b.dataset.v);
+}
+function setView(v){
+  view = v;
+  for (const P of panes){
+    const on = v === "all" ? $("cmp").querySelector(`input[value="${P.run.key}"]`).checked : P.run.key === v;
+    P.el.style.display = on ? "" : "none";
+  }
+  updateStatic(); setTimeout(resize, 0);
+}
+function updateLive(){
+  const f = Math.min(nF-1, Math.floor(cursor)), rs = vis();
+  const rows = [["In network",0,0],["Stopped",1,0],["Mean speed [km/h]",2,1],["Arrived",3,0],["Avg wait so far [s]",4,1]];
+  $("live").innerHTML = head(rs) + rows.map(([l,i,d]) => `<tr><td>${l}</td>${rs.map(r => `<td>${fmt(r.stats[f][i],d)}</td>`).join("")}</tr>`).join("");
+  const R = runs[D.pair[1]], t0 = R.times[0];
+  $("clock").textContent = `${mmss(R.times[f]-t0)} / ${mmss(R.times[nF-1]-t0)}`;
+}
+function chart(id, idx){
+  const c = $(id), d = window.devicePixelRatio || 1, r = c.getBoundingClientRect();
+  c.width = r.width*d; c.height = r.height*d; const ctx = c.getContext("2d"); ctx.setTransform(d,0,0,d,0,0);
+  const W = r.width, H = r.height, f = Math.min(nF-1, Math.floor(cursor)), rs = vis();
+  let mx = 1; for (const R of rs) for (const s of R.stats) mx = Math.max(mx, s[idx]);
+  ctx.fillStyle = "#6b7686"; ctx.font = "10px sans-serif"; ctx.fillText(fmt(mx, 0), 2, 10);
+  ctx.strokeStyle = "#232b3a"; ctx.beginPath(); ctx.moveTo(0,H-1); ctx.lineTo(W,H-1); ctx.stroke();
+  for (const R of rs){
+    ctx.strokeStyle = R.color; ctx.lineWidth = 1.6; ctx.beginPath();
+    for (let i = 0; i <= f; i++){ const x = i/(nF-1)*W, y = H-2-(R.stats[i][idx]/mx)*(H-14); i ? ctx.lineTo(x,y) : ctx.moveTo(x,y); }
+    ctx.stroke();
+  }
+}
+function timeline(){
+  const c = $("tl"), d = window.devicePixelRatio || 1, r = c.getBoundingClientRect();
+  c.width = r.width*d; c.height = r.height*d; const ctx = c.getContext("2d"); ctx.setTransform(d,0,0,d,0,0);
+  const W = r.width, H = r.height, rs = vis(); let mx = 1; for (const R of rs) for (const s of R.stats) mx = Math.max(mx, s[1]);
+  for (const R of rs){ ctx.strokeStyle = R.color; ctx.globalAlpha = .7; ctx.lineWidth = 1.2; ctx.beginPath();
+    R.stats.forEach((s,i) => { const x = i/(nF-1)*W, y = H-3-(s[1]/mx)*(H-8); i ? ctx.lineTo(x,y) : ctx.moveTo(x,y); }); ctx.stroke(); }
+  ctx.globalAlpha = 1; const x = cursor/(nF-1)*W; ctx.fillStyle = "#e6edf3"; ctx.fillRect(x-1, 0, 2, H);
+}
+function drawCharts(){ if (!panes.length) return; chart("ch1", 1); chart("ch2", 4); timeline(); updateLive(); }
+
+// ---------------------------------------------------------------- controls
+$("bPlay").onclick = () => { playing = !playing; $("bPlay").textContent = playing ? "❚❚" : "▶"; };
+const SPEEDS = [1,2,4,8,16,32];
+$("bSpeed").onclick = () => { speed = SPEEDS[(SPEEDS.indexOf(speed)+1) % SPEEDS.length]; $("bSpeed").textContent = speed + "×"; };
+$("bFit").onclick = () => panes[0].map.fitBounds(bounds.pad(0.04));
+let scrub = false;
+const seek = e => { const r = $("tl").getBoundingClientRect(); cursor = Math.max(0, Math.min(nF-1.001, (e.clientX-r.left)/r.width*(nF-1))); drawCharts(); draw(); };
+$("tl").addEventListener("pointerdown", e => { scrub = true; seek(e); });
+window.addEventListener("pointermove", e => scrub && seek(e));
+window.addEventListener("pointerup", () => scrub = false);
+window.addEventListener("keydown", e => { if (e.code === "Space"){ e.preventDefault(); $("bPlay").click(); } });
+for (const id of ["oBase","oNight"]) $(id).onchange = () => { setTiles(); draw(); };
+for (const id of ["oRings","oMsg","oQueue","oSpeed"]) $(id).onchange = draw;
+if (!geo) { $("oBase").checked = false; $("oBase").disabled = true; $("oBase").parentElement.title = "this network has no geographic coordinates"; }
+
+let chartTick = 0;
+function loop(ts){
+  if (lastTs !== null && playing && nF > 1){ cursor += (ts-lastTs)/1000*speed; if (cursor >= nF-1) cursor = 0; }
+  lastTs = ts; draw();
+  if (++chartTick % 6 === 0) drawCharts();
+  requestAnimationFrame(loop);
+}
+(async () => {
+  try {
+    for (const r of D.runs) runs[r.key] = await decode(r);
+    const order = D.runs.map(r => r.key);
+    for (const k of order) panes.push(mkPane(runs[k]));
+    nF = Math.min(...Object.values(runs).map(r => r.times.length));
+    $("cmp").innerHTML = order.map(k => `<label><input type="checkbox" value="${k}" checked><i class="dot" style="background:${runs[k].color}"></i>${runs[k].short||runs[k].label}</label>`).join("");
+    for (const i of $("cmp").querySelectorAll("input")) i.onchange = () => setView("all");
+    view = "all"; setTiles(); setView("all"); $("load").remove();
+    setTimeout(() => { resize(); panes[0].map.fitBounds(bounds.pad(0.04)); }, 50);
+    requestAnimationFrame(loop);
+  } catch (e) { $("load").textContent = "Could not load: " + e.message; console.error(e); }
+})();
+</script>
+</body>
+</html>

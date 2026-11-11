@@ -1,0 +1,221 @@
+[
+ {
+  "file": "cologne8.html",
+  "title": "Cologne",
+  "subtitle": "8 agent-controlled junctions \u00b7 real OpenStreetMap network \u00b7 real morning demand (TAPASCologne)",
+  "rows": [
+   [
+    "TrafficSync CoMP agents",
+    24.115,
+    "#22d3ee"
+   ],
+   [
+    "TrafficSync CoCycle agents",
+    26.421,
+    "#f472b6"
+   ],
+   [
+    "Max-pressure agents",
+    24.026,
+    "#a78bfa"
+   ],
+   [
+    "Actuated agents",
+    23.475,
+    "#3fb950"
+   ],
+   [
+    "Fixed-time (city signals)",
+    41.326,
+    "#f59e0b"
+   ]
+  ]
+ },
+ {
+  "file": "ingolstadt21.html",
+  "title": "Ingolstadt (21 junctions)",
+  "subtitle": "21 agent-controlled junctions \u00b7 real OpenStreetMap network \u00b7 real afternoon demand (InTAS)",
+  "rows": [
+   [
+    "TrafficSync CoMP agents",
+    69.087,
+    "#22d3ee"
+   ],
+   [
+    "TrafficSync CoCycle agents",
+    79.968,
+    "#f472b6"
+   ],
+   [
+    "Max-pressure agents",
+    69.351,
+    "#a78bfa"
+   ],
+   [
+    "Actuated agents",
+    70.729,
+    "#3fb950"
+   ],
+   [
+    "Fixed-time (city signals)",
+    95.421,
+    "#f59e0b"
+   ]
+  ]
+ },
+ {
+  "file": "bologna_acosta.html",
+  "title": "Bologna \u00b7 Andrea Costa",
+  "subtitle": "7 agent-controlled junctions \u00b7 real network, real demand incl. buses (iTETRIS) \u00b7 city signal plans",
+  "rows": [
+   [
+    "TrafficSync CoMP agents",
+    98.467,
+    "#22d3ee"
+   ],
+   [
+    "TrafficSync CoCycle agents",
+    93.332,
+    "#f472b6"
+   ],
+   [
+    "Max-pressure agents",
+    92.354,
+    "#a78bfa"
+   ],
+   [
+    "Actuated agents",
+    82.527,
+    "#3fb950"
+   ],
+   [
+    "Fixed-time (city signals)",
+    104.477,
+    "#f59e0b"
+   ]
+  ]
+ },
+ {
+  "file": "bologna_pasubio.html",
+  "title": "Bologna \u00b7 Pasubio",
+  "subtitle": "8 agent-controlled junctions \u00b7 real network, real demand incl. buses (iTETRIS) \u00b7 city signal plans",
+  "rows": [
+   [
+    "TrafficSync CoMP agents",
+    66.13,
+    "#22d3ee"
+   ],
+   [
+    "TrafficSync CoCycle agents",
+    99.976,
+    "#f472b6"
+   ],
+   [
+    "Max-pressure agents",
+    76.94,
+    "#a78bfa"
+   ],
+   [
+    "Actuated agents",
+    83.182,
+    "#3fb950"
+   ],
+   [
+    "Fixed-time (city signals)",
+    101.127,
+    "#f59e0b"
+   ]
+  ]
+ },
+ {
+  "file": "ingolstadt7.html",
+  "title": "Ingolstadt",
+  "subtitle": "7 agent-controlled junctions \u00b7 real OpenStreetMap network \u00b7 real afternoon demand (InTAS)",
+  "rows": [
+   [
+    "TrafficSync CoMP agents",
+    35.432,
+    "#22d3ee"
+   ],
+   [
+    "TrafficSync CoCycle agents",
+    55.539,
+    "#f472b6"
+   ],
+   [
+    "Max-pressure agents",
+    40.881,
+    "#a78bfa"
+   ],
+   [
+    "Actuated agents",
+    38.933,
+    "#3fb950"
+   ],
+   [
+    "Fixed-time (city signals)",
+    61.398,
+    "#f59e0b"
+   ]
+  ]
+ },
+ {
+  "file": "cologne3.html",
+  "title": "Cologne (3 junctions)",
+  "subtitle": "3 agent-controlled junctions \u00b7 real OpenStreetMap network \u00b7 real morning demand (TAPASCologne)",
+  "rows": [
+   [
+    "TrafficSync CoMP agents",
+    14.424,
+    "#22d3ee"
+   ],
+   [
+    "TrafficSync CoCycle agents",
+    13.125,
+    "#f472b6"
+   ],
+   [
+    "Max-pressure agents",
+    13.669,
+    "#a78bfa"
+   ],
+   [
+    "Actuated agents",
+    14.2,
+    "#3fb950"
+   ],
+   [
+    "Fixed-time (city signals)",
+    27.943,
+    "#f59e0b"
+   ]
+  ]
+ },
+ {
+  "file": "grid3x3.html",
+  "title": "TrafficSync grid3x3 in SUMO",
+  "subtitle": "9 agents \u00b7 synthetic grid, demand D_med \u00b7 seed 0 \u00b7 same vehicles in every run",
+  "rows": [
+   [
+    "CoMP agents",
+    45.637,
+    "#22d3ee"
+   ],
+   [
+    "CoCycle agents",
+    52.299,
+    "#a78bfa"
+   ],
+   [
+    "Actuated agents",
+    45.637,
+    "#3fb950"
+   ],
+   [
+    "Fixed-time (Webster)",
+    50.546,
+    "#f59e0b"
+   ]
+  ]
+ }
+]

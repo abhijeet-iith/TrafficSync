@@ -1,0 +1,96 @@
+controllers:
+  common:
+    decision_interval_s: 5
+  fixed:
+    c_min: 30
+    c_max: 120
+  actuated:
+    theta: 2.0
+    gap_out: false
+  maxpressure_local:
+    theta: 1.0
+    gap_out: false
+  comp:
+    theta: 1.0
+    gap_out: false
+    kappa: 0.5
+    anticipation_horizon_s: 15
+    delta_room: 2
+    max_info_age_s: 30
+    gamma:
+      enabled: true
+      beta: 1.0
+      min: 0.5
+      max: 1.5
+    consensus:
+      weights: laplacian
+      epsilon: auto
+      iterations_per_decision: 5
+      mode: dynamic
+      aggregation: average
+      F: 1
+  cocycle:
+    cycle:
+      rule: webster
+      C_min: 40
+      C_max: 100
+      rho_ref: 0.6
+    consensus:
+      weights: laplacian
+      epsilon: auto
+      iterations_per_decision: 5
+      mode: dynamic
+      aggregation: average
+      F: 1
+    offsets: true
+    actuation: local
+    max_extension_s: 10
+  comp+cycle:
+    cycle:
+      rule: webster
+      C_min: 40
+      C_max: 100
+      rho_ref: 0.6
+    consensus:
+      weights: laplacian
+      epsilon: auto
+      iterations_per_decision: 5
+      mode: dynamic
+      aggregation: average
+      F: 1
+    offsets: true
+    actuation: comp
+    max_extension_s: 10
+    kappa: 0.5
+    delta_room: 2
+    max_info_age_s: 30
+  comp+epistemic:
+    epistemic:
+      delta0: 2.0
+      max_info_age_s: 60
+  dmpc:
+    horizon: 12
+    step_s: 5
+    w_q: 0.05
+    w_u: 0.5
+    w_room: 10.0
+    theta: 1.5
+    sweeps: 2
+    delta_room: 2
+    max_info_age_s: 30
+    stl: false
+    epistemic: false
+    T_r: 180
+    q_thr_frac: 0.2
+    q_hi_frac: 0.6
+    R_max: 120
+    w_lin: 1.0
+    w_switch_l1: 30.0
+    decision_lookahead: 3
+  dmpc+stl:
+    base: dmpc
+    stl: true
+  dmpc+stl+epistemic:
+    base: dmpc
+    stl: true
+    epistemic: true

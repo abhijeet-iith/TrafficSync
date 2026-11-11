@@ -1,0 +1,8 @@
+{
+  "exp_id": "E1_baselines",
+  "n_runs": 180,
+  "wall_s": 47.31,
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "platform": "Linux-6.18.44-fc-v338-x86_64-with-glibc2.39"
+}

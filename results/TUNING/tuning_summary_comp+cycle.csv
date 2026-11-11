@@ -1,0 +1,4 @@
+controller,setting,params,geomean_ratio_vs_fixed
+comp+cycle,1,"{'max_extension_s': 40}",1.039
+comp+cycle,0,"{'max_extension_s': 10}",1.050
+fixed,ref,"{}",1.000

@@ -1,0 +1,28 @@
+# Simulator defaults.
+# duration_s is the TOTAL simulated time; metrics are computed for t >= warmup_s.
+sim:
+  dt: 1.0                       # fixed
+  duration_s: 3600
+  warmup_s: 600
+  decision_interval_s: 5        # controllers decide every 5 s
+  phase_scheme: 2phase          # 2phase (core: NS / EW) | 4phase (extended: protected crossing turns)
+  queue_mode: link              # link (core: one FIFO per link) | movement (extended: FIFO per movement)
+  drive_side: right             # decides which turn is the crossing turn in 4phase
+  initial_phase: 0              # every signal starts green on phase 0 (NS)
+  turning: {through: 0.70, left: 0.15, right: 0.15}
+  travel_time_rule: include_unfinished   # include_unfinished | completed_only
+  gridlock_window_s: 300
+  gridlock_ratio: 0.05          # gridlock if exits < 5% of arrivals over a 300 s window
+  signal:
+    g_min: 5
+    g_max: 40
+    yellow: 3
+    allred: 1
+    startup_lost: 2
+  stl:
+    delta_room: 2
+    T_c: 300
+    T_r: 180
+    q_thr_frac: 0.2
+    q_hi_frac: 0.6
+    R_max: 120

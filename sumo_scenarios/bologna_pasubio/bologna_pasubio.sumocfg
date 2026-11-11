@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bologna "pasubio" scenario (iTETRIS project, real network and demand, city signal programs "utopia");
+     from https://github.com/DLR-TS/sumo-scenarios (EPL-2.0, see LICENSE). Wrapper config for TrafficSync. -->
+<configuration>
+    <input>
+        <net-file value="pasubio_buslanes.net.xml"/>
+        <route-files value="pasubio.rou.xml,pasubio_busses.rou.xml"/>
+        <additional-files value="pasubio_vtypes.add.xml,pasubio_bus_stops.add.xml,pasubio_tls.add.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+    </time>
+</configuration>

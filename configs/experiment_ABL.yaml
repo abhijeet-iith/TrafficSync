@@ -1,0 +1,23 @@
+experiment:
+  id: ABL_ablations
+  description: "Ablations of CoMP and CoCycle: downstream term, kappa = 0, gamma, offsets, veto, K_c"
+  networks: [grid3x3]
+  demands: [D_med, D_high]
+  controllers: [actuated, comp, comp-no-downstream, comp-kappa0, comp-no-gamma, comp-no-veto, comp-Kc0, comp-Kc1, comp-Kc10,
+                cocycle, cocycle-no-offsets, cocycle-Kc0, cocycle-Kc1, cocycle-Kc10, cocycle-occupancy, comp+cycle]
+  seeds: {start: 0, count: 10}
+  info_modes: [perfect_sensor]
+  reference: actuated
+controller_params:
+  comp-no-downstream: {base: comp, downstream: false}
+  comp-kappa0: {base: comp, kappa: 0.0}
+  comp-no-gamma: {base: comp, gamma: {enabled: false}}
+  comp-no-veto: {base: comp, veto: false}
+  comp-Kc0: {base: comp, consensus: {iterations_per_decision: 0}}
+  comp-Kc1: {base: comp, consensus: {iterations_per_decision: 1}}
+  comp-Kc10: {base: comp, consensus: {iterations_per_decision: 10}}
+  cocycle-no-offsets: {base: cocycle, offsets: false}
+  cocycle-Kc0: {base: cocycle, consensus: {iterations_per_decision: 0}}
+  cocycle-Kc1: {base: cocycle, consensus: {iterations_per_decision: 1}}
+  cocycle-Kc10: {base: cocycle, consensus: {iterations_per_decision: 10}}
+  cocycle-occupancy: {base: cocycle, cycle: {rule: occupancy}}

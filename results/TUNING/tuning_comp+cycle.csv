@@ -1,0 +1,55 @@
+controller,setting,params,network,demand,seed,mean_delay,ratio_vs_fixed
+fixed,ref,{},grid2x2,D_med,100,31.51918735891648,1.0
+fixed,ref,{},grid2x2,D_med,101,32.79410096426545,1.0
+fixed,ref,{},grid2x2,D_med,102,31.826681870011402,1.0
+fixed,ref,{},grid2x2,D_high,100,85.29723266142808,1.0
+fixed,ref,{},grid2x2,D_high,101,80.26038781163435,1.0
+fixed,ref,{},grid2x2,D_high,102,70.48632010943912,1.0
+fixed,ref,{},grid2x2,D_tidal,100,35.51657595249876,1.0
+fixed,ref,{},grid2x2,D_tidal,101,36.63716381418093,1.0
+fixed,ref,{},grid2x2,D_tidal,102,37.959902200489,1.0
+fixed,ref,{},grid3x3,D_med,100,47.05601816805451,1.0
+fixed,ref,{},grid3x3,D_med,101,45.646365422396855,1.0
+fixed,ref,{},grid3x3,D_med,102,46.39368581209585,1.0
+fixed,ref,{},grid3x3,D_high,100,95.86531365313652,1.0
+fixed,ref,{},grid3x3,D_high,101,101.28859060402685,1.0
+fixed,ref,{},grid3x3,D_high,102,104.67704993128721,1.0
+fixed,ref,{},grid3x3,D_tidal,100,55.30554643912045,1.0
+fixed,ref,{},grid3x3,D_tidal,101,53.459604425075426,1.0
+fixed,ref,{},grid3x3,D_tidal,102,54.10084580351334,1.0
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_med,100,31.863995485327315,1.0109396261548378
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_med,101,32.89109472490074,1.0029576587795768
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_med,102,31.246864310148233,0.9817820292347378
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_high,100,84.66826101810727,0.9926261189994592
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_high,101,84.02250692520775,1.0468739214468143
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_high,102,80.48461012311901,1.1418472406866502
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_tidal,100,38.12122711528946,1.0733362125412724
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_tidal,101,40.49046454767726,1.1051746459698624
+comp+cycle,0,{'max_extension_s': 10},grid2x2,D_tidal,102,41.14718826405868,1.0839645488741174
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_med,100,45.86033308099924,0.9745901771207026
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_med,101,44.81375245579568,0.9817594904019972
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_med,102,44.94979079497908,0.9688773376841656
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_high,100,105.11070110701107,1.0964414249696877
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_high,101,112.83499190002314,1.1139950830309733
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_high,102,112.62940907008704,1.075970417049582
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_tidal,100,60.64719396127338,1.0965843006005365
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_tidal,101,57.35534696614147,1.0728726406220606
+comp+cycle,0,{'max_extension_s': 10},grid3x3,D_tidal,102,59.3028627195836,1.0961540774235445
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_med,100,31.863995485327315,1.0109396261548378
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_med,101,32.89109472490074,1.0029576587795768
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_med,102,30.668757126567844,0.9636177987962167
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_high,100,84.27092586265802,0.9879678769551199
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_high,101,87.79951523545706,1.0939333540415546
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_high,102,75.49863201094391,1.071110421053653
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_tidal,100,37.761999010390895,1.0632218336839465
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_tidal,101,39.28606356968215,1.072300895586135
+comp+cycle,1,{'max_extension_s': 40},grid2x2,D_tidal,102,41.51638141809291,1.0936904209821199
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_med,100,45.86033308099924,0.9745901771207026
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_med,101,44.11552062868369,0.9664629422398209
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_med,102,44.43971091669837,0.9578827406964066
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_high,100,100.52721402214023,1.048629688793087
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_high,101,107.69613515389956,1.0632602794812507
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_high,102,110.73912047640862,1.0579121263839657
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_tidal,100,58.811289793239254,1.0633886396543948
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_tidal,101,59.219242373449546,1.1077381325641187
+comp+cycle,1,{'max_extension_s': 40},grid3x3,D_tidal,102,61.1476903057905,1.1302538693733237

@@ -1,0 +1,10 @@
+# Communication model.
+comm:
+  period_s: 5              # T_c
+  latency_steps: 1         # delta_c
+  drop_prob: 0.0
+  enforce_topology: true
+  missing_policy: last     # last | age_discounted | ignore
+  outage_start_s: null
+  outage_end_s: null
+  topology: null           # null = the network's own communication graph (road adjacency)

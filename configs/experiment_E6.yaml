@@ -1,0 +1,8 @@
+experiment:
+  id: E6_comm_graph
+  description: "Communication structure (RQ3): road, ring, complete, 2-hop, Erdos-Renyi graphs (swept over comm.topology)"
+  networks: [grid3x3]
+  demands: [D_med]
+  controllers: [cocycle]
+  seeds: {start: 0, count: 3}
+  info_modes: [perfect_sensor]

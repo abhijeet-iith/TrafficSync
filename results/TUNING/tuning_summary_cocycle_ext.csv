@@ -1,0 +1,6 @@
+controller,setting,params,geomean_ratio_vs_fixed
+cocycle_ext,2,"{'max_extension_s': 40, 'cycle': {'C_min': 40}}",0.796
+cocycle_ext,1,"{'max_extension_s': 30, 'cycle': {'C_min': 40}}",0.817
+cocycle_ext,0,"{'max_extension_s': 20, 'cycle': {'C_min': 40}}",0.847
+cocycle_ext,3,"{'max_extension_s': 20, 'cycle': {'C_min': 30}}",0.847
+fixed,ref,"{}",1.000

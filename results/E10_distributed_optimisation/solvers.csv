@@ -1,0 +1,127 @@
+network,demand,source,solver,z_star,final_error,iters_to_1e-3,iters_to_1e-6,stopped_at,z_error_at_stop,messages_to_1e-6
+corridor3,D_med,design,ADMM (central z),44.230769230769226,0.0,1,1,1,0.0,6.0
+corridor3,D_med,design,ADMM (decentralised),44.230769230769226,7.105427357601002e-15,1,1,,,4.0
+corridor3,D_med,design,Gradient tracking,44.230769230769226,0.0,1,1,,,8.0
+corridor3,D_med,design,DGD (alpha=0.2),44.230769230769226,0.0,1,1,,,4.0
+corridor3,D_med,design,DGD (alpha=0.02),44.230769230769226,0.0,1,1,,,4.0
+corridor3,D_med,design,DGD (alpha=0.5/(k+1)^0.6),44.230769230769226,0.0,1,1,,,4.0
+corridor3,D_med,design,"ADMM (local z, 1 round)",44.230769230769226,0.0,1,1,,,4.0
+corridor3,D_tidal,design,ADMM (central z),49.53024135520744,0.0,15,31,15,0.0008758370256387593,186.0
+corridor3,D_tidal,design,ADMM (decentralised),49.53024135520744,2.842170943040401e-14,42,80,,,320.0
+corridor3,D_tidal,design,Gradient tracking,49.53024135520744,2.1316282072803006e-14,55,117,,,936.0
+corridor3,D_tidal,design,DGD (alpha=0.2),49.53024135520744,0.593166232436424,,,,,nan
+corridor3,D_tidal,design,DGD (alpha=0.02),49.53024135520744,0.06451978607320541,,,,,nan
+corridor3,D_tidal,design,DGD (alpha=0.5/(k+1)^0.6),49.53024135520744,0.017121081742729416,,,,,nan
+corridor3,D_tidal,design,"ADMM (local z, 1 round)",49.53024135520744,7.105427357601002e-15,14,31,,,124.0
+corridor3,D_hotspot,design,ADMM (central z),105.8587577592311,1.4210854715202004e-14,19,31,19,0.00048508866817087437,186.0
+corridor3,D_hotspot,design,ADMM (decentralised),105.8587577592311,4.263256414560601e-14,41,69,,,276.0
+corridor3,D_hotspot,design,Gradient tracking,105.8587577592311,1.4210854715202004e-14,66,111,,,888.0
+corridor3,D_hotspot,design,DGD (alpha=0.2),105.8587577592311,17.22584071366215,,,,,nan
+corridor3,D_hotspot,design,DGD (alpha=0.02),105.8587577592311,2.3913883219066037,,,,,nan
+corridor3,D_hotspot,design,DGD (alpha=0.5/(k+1)^0.6),105.8587577592311,0.6533782063628024,,,,,nan
+corridor3,D_hotspot,design,"ADMM (local z, 1 round)",105.8587577592311,37.363576404316134,,,,,nan
+corridor3,D_med,measured,ADMM (central z),46.20086250576105,2.1316282072803006e-14,7,23,7,0.0006193011383501812,138.0
+corridor3,D_med,measured,ADMM (decentralised),46.20086250576105,7.105427357601002e-15,32,72,,,288.0
+corridor3,D_med,measured,Gradient tracking,46.20086250576105,2.1316282072803006e-14,24,87,,,696.0
+corridor3,D_med,measured,DGD (alpha=0.2),46.20086250576105,0.0783247069995241,,,,,nan
+corridor3,D_med,measured,DGD (alpha=0.02),46.20086250576105,0.008526953790251923,,,,,nan
+corridor3,D_med,measured,DGD (alpha=0.5/(k+1)^0.6),46.20086250576105,0.0022484657104442363,,,,,nan
+corridor3,D_med,measured,"ADMM (local z, 1 round)",46.20086250576105,0.032016814617335854,,,,,nan
+corridor3,D_high,measured,ADMM (central z),132.41522694080203,5.684341886080802e-14,12,21,12,8.514379820212525e-05,126.0
+corridor3,D_high,measured,ADMM (decentralised),132.41522694080203,2.842170943040401e-14,27,52,,,208.0
+corridor3,D_high,measured,Gradient tracking,132.41522694080203,2.842170943040401e-14,45,83,,,664.0
+corridor3,D_high,measured,DGD (alpha=0.2),132.41522694080203,1.8650824272038449,,,,,nan
+corridor3,D_high,measured,DGD (alpha=0.02),132.41522694080203,0.25638727998676814,,,,,nan
+corridor3,D_high,measured,DGD (alpha=0.5/(k+1)^0.6),132.41522694080203,0.06926417116937955,,,,,nan
+corridor3,D_high,measured,"ADMM (local z, 1 round)",132.41522694080203,2.899859853667465,,,,,nan
+corridor3,D_hotspot,measured,ADMM (central z),110.24612569944229,1.4210854715202004e-14,20,32,20,0.0005090490584791496,192.0
+corridor3,D_hotspot,measured,ADMM (decentralised),110.24612569944229,5.684341886080802e-14,44,73,,,292.0
+corridor3,D_hotspot,measured,Gradient tracking,110.24612569944229,4.263256414560601e-14,71,116,,,928.0
+corridor3,D_hotspot,measured,DGD (alpha=0.2),110.24612569944229,20.672670697800598,,,,,nan
+corridor3,D_hotspot,measured,DGD (alpha=0.02),110.24612569944229,2.8604673217112264,,,,,nan
+corridor3,D_hotspot,measured,DGD (alpha=0.5/(k+1)^0.6),110.24612569944229,0.7836336332440226,,,,,nan
+corridor3,D_hotspot,measured,"ADMM (local z, 1 round)",110.24612569944229,45.79350279659123,,,,,nan
+grid2x2,D_med,design,ADMM (central z),44.230769230769226,0.0,1,1,1,0.0,8.0
+grid2x2,D_med,design,ADMM (decentralised),44.230769230769226,1.4210854715202004e-14,1,1,,,8.0
+grid2x2,D_med,design,Gradient tracking,44.230769230769226,0.0,1,1,,,16.0
+grid2x2,D_med,design,DGD (alpha=0.2),44.230769230769226,0.0,1,1,,,8.0
+grid2x2,D_med,design,DGD (alpha=0.02),44.230769230769226,0.0,1,1,,,8.0
+grid2x2,D_med,design,DGD (alpha=0.5/(k+1)^0.6),44.230769230769226,0.0,1,1,,,8.0
+grid2x2,D_med,design,"ADMM (local z, 1 round)",44.230769230769226,0.0,1,1,,,8.0
+grid2x2,D_tidal,design,ADMM (central z),64.51214791794055,0.0,1,1,1,0.0,8.0
+grid2x2,D_tidal,design,ADMM (decentralised),64.51214791794055,0.0,1,1,,,8.0
+grid2x2,D_tidal,design,Gradient tracking,64.51214791794055,0.0,1,1,,,16.0
+grid2x2,D_tidal,design,DGD (alpha=0.2),64.51214791794055,0.0,1,1,,,8.0
+grid2x2,D_tidal,design,DGD (alpha=0.02),64.51214791794055,0.0,1,1,,,8.0
+grid2x2,D_tidal,design,DGD (alpha=0.5/(k+1)^0.6),64.51214791794055,0.0,1,1,,,8.0
+grid2x2,D_tidal,design,"ADMM (local z, 1 round)",64.51214791794055,0.0,1,1,,,8.0
+grid2x2,D_hotspot,design,ADMM (central z),96.22167955056084,2.842170943040401e-14,22,36,22,0.0006380429880010752,288.0
+grid2x2,D_hotspot,design,ADMM (decentralised),96.22167955056084,7.105427357601002e-14,71,121,,,968.0
+grid2x2,D_hotspot,design,Gradient tracking,96.22167955056084,9.947598300641403e-14,79,134,,,2144.0
+grid2x2,D_hotspot,design,DGD (alpha=0.2),96.22167955056084,10.449817752613697,,,,,nan
+grid2x2,D_hotspot,design,DGD (alpha=0.02),96.22167955056084,1.2216745187304525,,,,,nan
+grid2x2,D_hotspot,design,DGD (alpha=0.5/(k+1)^0.6),96.22167955056084,0.33260543597103265,,,,,nan
+grid2x2,D_hotspot,design,"ADMM (local z, 1 round)",96.22167955056084,24.664798290077,,,,,nan
+grid2x2,D_med,measured,ADMM (central z),45.58183240294678,7.105427357601002e-15,10,27,10,0.0008046563563013365,216.0
+grid2x2,D_med,measured,ADMM (decentralised),45.58183240294678,4.973799150320701e-14,31,90,,,720.0
+grid2x2,D_med,measured,Gradient tracking,45.58183240294678,3.552713678800501e-14,36,102,,,1632.0
+grid2x2,D_med,measured,DGD (alpha=0.2),45.58183240294678,0.21197077900393424,,,,,nan
+grid2x2,D_med,measured,DGD (alpha=0.02),45.58183240294678,0.023712057949907717,,,,,nan
+grid2x2,D_med,measured,DGD (alpha=0.5/(k+1)^0.6),45.58183240294678,0.006278262448113026,,,,,nan
+grid2x2,D_med,measured,"ADMM (local z, 1 round)",45.58183240294678,0.33100764599242183,,,,,nan
+grid2x2,D_high,measured,ADMM (central z),131.36370355443583,0.0,12,21,12,0.00011689558974126157,168.0
+grid2x2,D_high,measured,ADMM (decentralised),131.36370355443583,8.526512829121202e-14,23,59,,,472.0
+grid2x2,D_high,measured,Gradient tracking,131.36370355443583,5.684341886080802e-14,64,124,,,1984.0
+grid2x2,D_high,measured,DGD (alpha=0.2),131.36370355443583,1.4716285786039691,,,,,nan
+grid2x2,D_high,measured,DGD (alpha=0.02),131.36370355443583,0.17532485461603642,,,,,nan
+grid2x2,D_high,measured,DGD (alpha=0.5/(k+1)^0.6),131.36370355443583,0.04655225403698182,,,,,nan
+grid2x2,D_high,measured,"ADMM (local z, 1 round)",131.36370355443583,2.522044391675223,,,,,nan
+grid2x2,D_hotspot,measured,ADMM (central z),113.35653615402633,1.4210854715202004e-14,23,38,23,0.000700025054982234,304.0
+grid2x2,D_hotspot,measured,ADMM (decentralised),113.35653615402633,1.4210854715202004e-14,76,127,,,1016.0
+grid2x2,D_hotspot,measured,Gradient tracking,113.35653615402633,1.1368683772161603e-13,85,142,,,2272.0
+grid2x2,D_hotspot,measured,DGD (alpha=0.2),113.35653615402633,14.531295064070463,,,,,nan
+grid2x2,D_hotspot,measured,DGD (alpha=0.02),113.35653615402633,1.687833269271664,,,,,nan
+grid2x2,D_hotspot,measured,DGD (alpha=0.5/(k+1)^0.6),113.35653615402633,0.45887017884936654,,,,,nan
+grid2x2,D_hotspot,measured,"ADMM (local z, 1 round)",113.35653615402633,35.2834433219832,,,,,nan
+grid3x3,D_med,design,ADMM (central z),44.23076923076922,7.105427357601002e-15,1,1,1,7.105427357601002e-15,18.0
+grid3x3,D_med,design,ADMM (decentralised),44.23076923076922,7.105427357601002e-15,1,1,,,24.0
+grid3x3,D_med,design,Gradient tracking,44.23076923076922,7.105427357601002e-15,1,1,,,48.0
+grid3x3,D_med,design,DGD (alpha=0.2),44.23076923076922,7.105427357601002e-15,1,1,,,24.0
+grid3x3,D_med,design,DGD (alpha=0.02),44.23076923076922,7.105427357601002e-15,1,1,,,24.0
+grid3x3,D_med,design,DGD (alpha=0.5/(k+1)^0.6),44.23076923076922,7.105427357601002e-15,1,1,,,24.0
+grid3x3,D_med,design,"ADMM (local z, 1 round)",44.23076923076922,7.105427357601002e-15,1,1,,,24.0
+grid3x3,D_tidal,design,ADMM (central z),66.54127565871947,0.0,14,28,16,0.0003209970170132692,504.0
+grid3x3,D_tidal,design,ADMM (decentralised),66.54127565871947,1.2789769243681803e-13,69,129,,,3096.0
+grid3x3,D_tidal,design,Gradient tracking,66.54127565871947,4.263256414560601e-14,48,98,,,4704.0
+grid3x3,D_tidal,design,DGD (alpha=0.2),66.54127565871947,2.3850097398720465,,,,,nan
+grid3x3,D_tidal,design,DGD (alpha=0.02),66.54127565871947,0.27829367704282504,,,,,nan
+grid3x3,D_tidal,design,DGD (alpha=0.5/(k+1)^0.6),66.54127565871947,0.07403984085419779,,,,,nan
+grid3x3,D_tidal,design,"ADMM (local z, 1 round)",66.54127565871947,4.804876397685298,,,,,nan
+grid3x3,D_hotspot,design,ADMM (central z),70.94058697767157,4.263256414560601e-14,25,41,25,0.0005406123964490916,738.0
+grid3x3,D_hotspot,design,ADMM (decentralised),70.94058697767157,4.263256414560601e-14,101,177,,,4248.0
+grid3x3,D_hotspot,design,Gradient tracking,70.94058697767157,7.105427357601002e-14,94,159,,,7632.0
+grid3x3,D_hotspot,design,DGD (alpha=0.2),70.94058697767157,19.75923252217521,,,,,nan
+grid3x3,D_hotspot,design,DGD (alpha=0.02),70.94058697767157,2.565536799310806,,,,,nan
+grid3x3,D_hotspot,design,DGD (alpha=0.5/(k+1)^0.6),70.94058697767157,0.6774966605399158,,,,,nan
+grid3x3,D_hotspot,design,"ADMM (local z, 1 round)",70.94058697767157,24.458427499524447,,,,,nan
+grid3x3,D_med,measured,ADMM (central z),43.92935559457756,2.1316282072803006e-14,8,25,9,0.00048400083703370456,450.0
+grid3x3,D_med,measured,ADMM (decentralised),43.92935559457756,9.237055564881302e-14,53,133,,,3192.0
+grid3x3,D_med,measured,Gradient tracking,43.92935559457756,4.263256414560601e-14,45,103,,,4944.0
+grid3x3,D_med,measured,DGD (alpha=0.2),43.92935559457756,0.16731251186852347,,,,,nan
+grid3x3,D_med,measured,DGD (alpha=0.02),43.92935559457756,0.02074691543393925,,,,,nan
+grid3x3,D_med,measured,DGD (alpha=0.5/(k+1)^0.6),43.92935559457756,0.005575720537834172,,,,,nan
+grid3x3,D_med,measured,"ADMM (local z, 1 round)",43.92935559457756,0.4158165104946363,,,,,nan
+grid3x3,D_high,measured,ADMM (central z),112.48888679040707,1.4210854715202004e-14,12,23,13,0.00018246269857513653,414.0
+grid3x3,D_high,measured,ADMM (decentralised),112.48888679040707,8.526512829121202e-14,54,102,,,2448.0
+grid3x3,D_high,measured,Gradient tracking,112.48888679040707,5.684341886080802e-14,80,143,,,6864.0
+grid3x3,D_high,measured,DGD (alpha=0.2),112.48888679040707,5.011976259532773,,,,,nan
+grid3x3,D_high,measured,DGD (alpha=0.02),112.48888679040707,0.74177627813323,,,,,nan
+grid3x3,D_high,measured,DGD (alpha=0.5/(k+1)^0.6),112.48888679040707,0.20218712350467172,,,,,nan
+grid3x3,D_high,measured,"ADMM (local z, 1 round)",112.48888679040707,8.961948404461168,,,,,nan
+grid3x3,D_hotspot,measured,ADMM (central z),61.494528069499594,1.4210854715202004e-14,25,43,26,0.0004691331164821122,774.0
+grid3x3,D_hotspot,measured,ADMM (decentralised),61.494528069499594,1.6342482922482304e-13,104,185,,,4440.0
+grid3x3,D_hotspot,measured,Gradient tracking,61.494528069499594,1.4210854715202004e-14,97,166,,,7968.0
+grid3x3,D_hotspot,measured,DGD (alpha=0.2),61.494528069499594,14.312581119785534,,,,,nan
+grid3x3,D_hotspot,measured,DGD (alpha=0.02),61.494528069499594,1.8401335990214633,,,,,nan
+grid3x3,D_hotspot,measured,DGD (alpha=0.5/(k+1)^0.6),61.494528069499594,0.4844440166169619,,,,,nan
+grid3x3,D_hotspot,measured,"ADMM (local z, 1 round)",61.494528069499594,18.034303055117377,,,,,nan

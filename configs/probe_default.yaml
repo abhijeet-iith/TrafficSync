@@ -1,0 +1,13 @@
+# Probe-vehicle information model.
+probe:
+  mode: probe                   # probe | perfect_sensor (agents read true q, n)
+  penetration: 0.2              # pi, sweep {0.05, 0.1, 0.2, 0.5, 1.0} in E5
+  report_period_s: 5            # T_p
+  noise_std: 1.0                # sigma_v, m/s
+  pos_noise_std: 5.0            # m (position is reported but not used by the estimators yet)
+  delay_steps: 2                # delta_p
+  ema: 0.3                      # eta
+  v_stop: 1.0                   # m/s, "stopped" threshold
+  stop_noise_correction: true   # divide stopped count by P(noisy speed < v_stop | v = 0); false = literal formula
+  count_ema: false              # true: also EMA-smooth q_hat and n_hat
+  record_batches: false         # keep raw per-report estimates (used by tests)

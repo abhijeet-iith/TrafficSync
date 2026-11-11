@@ -1,0 +1,19 @@
+# 4x4 Manhattan grid (experiment E3, network size).
+network:
+  id: grid4x4
+  type: grid
+  rows: 4
+  cols: 4
+  link_length_m: 300.0
+  entry_length_m: 300.0
+  lanes: 1
+  free_flow_speed_mps: 13.9
+  vehicle_length_m: 7.5
+  sat_headway_s: 2.0
+
+communication:
+  topology: road            # road | path | ring | complete | erdos_renyi | k_hop | custom
+  remove_links: []
+  remove_fraction: 0.0
+  keep_connected: false
+  remove_seed: 0

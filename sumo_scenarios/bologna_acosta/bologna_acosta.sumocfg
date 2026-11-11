@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bologna "acosta" scenario (iTETRIS project, real network and demand, city signal programs "utopia");
+     from https://github.com/DLR-TS/sumo-scenarios (EPL-2.0, see LICENSE). Wrapper config for TrafficSync. -->
+<configuration>
+    <input>
+        <net-file value="acosta_buslanes.net.xml"/>
+        <route-files value="acosta.rou.xml,acosta_busses.rou.xml"/>
+        <additional-files value="acosta_vtypes.add.xml,acosta_bus_stops.add.xml,acosta_tls.add.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+    </time>
+</configuration>

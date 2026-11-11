@@ -1,0 +1,23 @@
+# 3-intersection E-W arterial with side streets.
+network:
+  id: corridor3
+  type: corridor            # corridor | grid
+  n: 3
+  link_length_m: 400.0      # corridor default
+  entry_length_m: 400.0
+  lanes: 1                  # 1 = core, 2 = extended
+  free_flow_speed_mps: 13.9 # 50 km/h
+  vehicle_length_m: 7.5     # vehicle length + gap
+  sat_headway_s: 2.0        # s_l = lanes / headway = 0.5 veh/s/lane
+
+communication:
+  topology: road            # road | path | ring | complete | erdos_renyi | k_hop | custom
+  # p: 0.3                  # erdos_renyi only
+  # seed: 0                 # erdos_renyi only
+  # k: 2                    # k_hop only
+  # edges: [[0, 2]]         # custom only
+  # weights: [[0, 2, 1.0]]  # custom only, [i, j, w]
+  remove_links: []          # e.g. [[0, 1]]
+  remove_fraction: 0.0
+  keep_connected: false
+  remove_seed: 0

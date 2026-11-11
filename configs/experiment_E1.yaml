@@ -1,0 +1,9 @@
+experiment:
+  id: E1_baselines
+  description: "Baseline sanity: fixed vs actuated vs local max-pressure"
+  networks: [corridor3, grid2x2]
+  demands: [D_low, D_med, D_high]
+  controllers: [fixed, actuated, maxpressure_local]
+  seeds: {start: 0, count: 10}
+  info_modes: [perfect_sensor]
+  reference: fixed

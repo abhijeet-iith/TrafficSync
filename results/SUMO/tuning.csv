@@ -1,0 +1,49 @@
+city,controller,candidate,mean_delay,completed
+cologne3,fixed,-,36.88454017857143,2240
+cologne8,fixed,-,48.909731503579955,1676
+ingolstadt7,fixed,-,187.320849181778,2261
+ingolstadt21,fixed,-,135.72251511487303,3308
+bologna_acosta,fixed,-,218.54986522462562,6010
+bologna_pasubio,fixed,-,208.1720523526578,6227
+cologne3,maxpressure,2 veh,21.905235765124555,2248
+cologne3,maxpressure,1 veh/lane,22.19447555555556,2250
+cologne3,maxpressure,2 veh/lane,22.082373333333337,2250
+cologne3,maxpressure,3 veh/lane,22.899195555555554,2250
+cologne3,maxpressure,"6 veh/lane, green 10-90 s",22.485517088326674,2253
+cologne3,maxpressure,"6 veh/lane, green 15-120 s",23.07944074567244,2253
+cologne3,maxpressure,"6 veh/lane, green 25-150 s",26.812115555555557,2250
+cologne8,maxpressure,2 veh,23.634028436018962,1688
+cologne8,maxpressure,1 veh/lane,23.62841043890866,1686
+cologne8,maxpressure,2 veh/lane,25.197458530805687,1688
+cologne8,maxpressure,3 veh/lane,25.30470065204505,1687
+cologne8,maxpressure,"6 veh/lane, green 10-90 s",29.26468211527035,1683
+cologne8,maxpressure,"6 veh/lane, green 15-120 s",33.468362017804154,1685
+cologne8,maxpressure,"6 veh/lane, green 25-150 s",40.24332739156268,1683
+ingolstadt7,maxpressure,2 veh,53.655486083098026,2479
+ingolstadt7,maxpressure,1 veh/lane,52.58446147640178,2479
+ingolstadt7,maxpressure,2 veh/lane,54.69295115058539,2477
+ingolstadt7,maxpressure,3 veh/lane,52.79101461038961,2464
+ingolstadt7,maxpressure,"6 veh/lane, green 10-90 s",106.01311293634497,2435
+ingolstadt7,maxpressure,"6 veh/lane, green 15-120 s",149.69482589285715,2240
+ingolstadt7,maxpressure,"6 veh/lane, green 25-150 s",181.85339340659343,2275
+ingolstadt21,maxpressure,2 veh,82.65565554231227,3356
+ingolstadt21,maxpressure,1 veh/lane,86.57835023866349,3352
+ingolstadt21,maxpressure,2 veh/lane,77.47392057330548,3349
+ingolstadt21,maxpressure,3 veh/lane,79.75714712026259,3351
+ingolstadt21,maxpressure,"6 veh/lane, green 10-90 s",158.32185352622062,3318
+ingolstadt21,maxpressure,"6 veh/lane, green 15-120 s",138.6294412389918,3293
+ingolstadt21,maxpressure,"6 veh/lane, green 25-150 s",176.33431045340052,3176
+bologna_acosta,maxpressure,2 veh,279.8822475890573,5081
+bologna_acosta,maxpressure,1 veh/lane,273.1888692785105,5156
+bologna_acosta,maxpressure,2 veh/lane,256.6039583333333,5088
+bologna_acosta,maxpressure,3 veh/lane,225.6544119984108,5034
+bologna_acosta,maxpressure,"6 veh/lane, green 10-90 s",253.8039809558689,5461
+bologna_acosta,maxpressure,"6 veh/lane, green 15-120 s",244.87740675888634,5711
+bologna_acosta,maxpressure,"6 veh/lane, green 25-150 s",205.12530738389574,5986
+bologna_pasubio,maxpressure,2 veh,192.68016920757245,5969
+bologna_pasubio,maxpressure,1 veh/lane,173.1020761529624,6093
+bologna_pasubio,maxpressure,2 veh/lane,177.02976819059882,6212
+bologna_pasubio,maxpressure,3 veh/lane,180.0763282268579,6136
+bologna_pasubio,maxpressure,"6 veh/lane, green 10-90 s",141.36850435323382,6432
+bologna_pasubio,maxpressure,"6 veh/lane, green 15-120 s",132.13138383992668,6547
+bologna_pasubio,maxpressure,"6 veh/lane, green 25-150 s",147.93972681860757,6406

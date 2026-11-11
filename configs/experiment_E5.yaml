@@ -1,0 +1,8 @@
+experiment:
+  id: E5_information
+  description: "Information ablation: perfect sensor vs probe penetration; with / without noise and latency"
+  networks: [grid3x3]
+  demands: [D_med]
+  controllers: [fixed, actuated, comp, cocycle]
+  seeds: {start: 0, count: 10}
+  info_modes: [probe]

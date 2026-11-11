@@ -1,0 +1,127 @@
+# Tuned parameters (experiments/tune.py after the stop-line discharge fix; tuning seeds 100-102, never used for
+# evaluation; grid2x2/grid3x3 x D_med/D_high/D_tidal, local detectors, 2400 s episodes; score = geometric mean of
+# delay / fixed-time delay, lower is better; full grids in results/TUNING/):
+#   actuated: theta=16 + gap-out 0.838 (theta 24: 0.835, 32: 0.837, 12: 0.859, 2: 2.02; without gap-out >= 1.08).
+#   CoMP: theta=8, kappa=0, gap-out 0.836 (best of 8 settings 0.833 at theta 12, kappa 0.5 -- within noise; kept).
+#   maxpressure_local uses the same rule in pressure units (all s_l = 0.5 -> theta 8 == actuated theta 16, so on
+#   these networks local max-pressure and actuated make identical decisions).
+#   CoCycle: local actuation window max_extension_s 10 -> 40 (0.917 -> 0.796; 20: 0.847, 30: 0.817);
+#   C_min 30 vs 40 made no difference.  CoMP+Cycle: max_extension_s 40 (1.039 vs 1.050 at 10).
+#   DMPC (tuning seed 101, grid3x3 D_med/D_high, 1500 s): the pure quadratic objective (w_q q^2, w_u = 5,
+#   theta 0.1) switched 2.3x as often as CoMP (291 s vs 94 s delay at D_high) because q^2 favours fractional
+#   splits that ignore switching lost time.  Chosen: linear queue term (= delay) + 0.05 q^2, L1 switching
+#   penalty 30, decision on planned green over the next 3 steps with margin 1.5 steps (92.6 s vs CoMP 94.4 s).
+controllers:
+  common:
+    decision_interval_s: 5
+  fixed:
+    c_min: 30
+    c_max: 120
+  actuated:
+    theta: 16.0
+    gap_out: true
+  maxpressure_local:
+    theta: 8.0
+    gap_out: true
+  comp:
+    theta: 8.0
+    gap_out: true
+    kappa: 0.0
+    anticipation_horizon_s: 15
+    delta_room: 2
+    max_info_age_s: 30
+    gamma:
+      enabled: true
+      beta: 1.0
+      min: 0.5
+      max: 1.5
+    consensus:
+      weights: laplacian
+      epsilon: auto
+      iterations_per_decision: 5
+      mode: dynamic
+      aggregation: average
+      F: 1
+  cocycle:
+    cycle:
+      rule: webster
+      C_min: 40
+      C_max: 100
+      rho_ref: 0.6
+    consensus:
+      weights: laplacian
+      epsilon: auto
+      iterations_per_decision: 5
+      mode: dynamic
+      aggregation: average
+      F: 1
+    offsets: true
+    actuation: local
+    max_extension_s: 40
+  comp+cycle:
+    cycle:
+      rule: webster
+      C_min: 40
+      C_max: 100
+      rho_ref: 0.6
+    consensus:
+      weights: laplacian
+      epsilon: auto
+      iterations_per_decision: 5
+      mode: dynamic
+      aggregation: average
+      F: 1
+    offsets: true
+    actuation: comp
+    max_extension_s: 40
+    kappa: 0.0
+    delta_room: 2
+    max_info_age_s: 30
+  comp+epistemic:
+    theta: 8.0
+    gap_out: true
+    kappa: 0.0
+    anticipation_horizon_s: 15
+    delta_room: 2
+    max_info_age_s: 30
+    gamma:
+      enabled: true
+      beta: 1.0
+      min: 0.5
+      max: 1.5
+    consensus:
+      weights: laplacian
+      epsilon: auto
+      iterations_per_decision: 5
+      mode: dynamic
+      aggregation: average
+      F: 1
+    epistemic:
+      delta0: 2.0
+      max_info_age_s: 60
+  dmpc:
+    horizon: 12
+    step_s: 5
+    w_q: 0.05
+    w_u: 0.5
+    w_room: 10.0
+    theta: 1.5
+    sweeps: 2
+    delta_room: 2
+    max_info_age_s: 30
+    stl: false
+    epistemic: false
+    T_r: 180
+    q_thr_frac: 0.2
+    q_hi_frac: 0.6
+    R_max: 120
+    w_lin: 1.0
+    w_switch_l1: 30.0
+    decision_lookahead: 3
+  dmpc+stl:
+    base: dmpc
+    stl: true
+  dmpc+stl+epistemic:
+    base: dmpc
+    stl: true
+    epistemic: true

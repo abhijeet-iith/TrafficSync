@@ -1,0 +1,11 @@
+experiment:
+  id: E2_main_comparison
+  description: "Main comparison (RQ1): controllers x grid 3x3 x 5 demand scenarios x 30 seeds"
+  networks: [grid3x3]
+  demands: [D_low, D_med, D_high, D_tidal, D_ramp]
+  controllers: [fixed, actuated, maxpressure_local, comp, cocycle, comp+cycle]
+  seeds: {start: 0, count: 30}
+  info_modes: [perfect_sensor, probe]
+  reference: fixed
+probe: {penetration: 0.2, noise_std: 1.0, delay_steps: 2}
+comm: {period_s: 5, latency_steps: 1, drop_prob: 0.0}

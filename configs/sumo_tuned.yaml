@@ -1,0 +1,23 @@
+# Per-city switching margin for the real-map agents (experiments/sumo_tune.py, SUMO seed 100)
+bologna_acosta:
+  g_max: 150
+  g_min: 25
+  theta: 6.0
+  theta_per_lane: true
+bologna_pasubio:
+  g_max: 120
+  g_min: 15
+  theta: 6.0
+  theta_per_lane: true
+cologne3:
+  theta: 2.0
+  theta_per_lane: false
+cologne8:
+  theta: 1.0
+  theta_per_lane: true
+ingolstadt21:
+  theta: 2.0
+  theta_per_lane: true
+ingolstadt7:
+  theta: 1.0
+  theta_per_lane: true

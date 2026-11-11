@@ -1,0 +1,8 @@
+experiment:
+  id: E7_comm_failures
+  description: "Communication failures (RQ4): drop probability, latency, message period, 10-min outage"
+  networks: [grid3x3]
+  demands: [D_med, D_high]
+  controllers: [comp, cocycle]
+  seeds: {start: 0, count: 10}
+  info_modes: [perfect_sensor]

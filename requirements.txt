@@ -1,0 +1,9 @@
+# TrafficSync - Python 3.10+ (tested with Python 3.13, numpy 2.5, scipy 1.18, matplotlib 3.11)
+numpy>=1.24
+pyyaml>=6.0
+scipy>=1.10          # t quantiles, Wilcoxon, Spearman, chi2, Nelder-Mead (epidemic MLE)
+matplotlib>=3.7      # figures
+pytest>=7.0
+networkx>=3.0        # tests only (independent graph generators)
+cvxpy>=1.4          # DMPC local QPs (OSQP, CLARABEL fallback)
+torch>=2.1          # MARL (E12), CPU is enough

@@ -1,0 +1,29 @@
+controller,setting,params,geomean_ratio_vs_fixed
+actuated,10,"{'theta': 24, 'gap_out': True}",0.835
+actuated,12,"{'theta': 32, 'gap_out': True}",0.837
+actuated,8,"{'theta': 16, 'gap_out': True}",0.838
+actuated,6,"{'theta': 12, 'gap_out': True}",0.859
+actuated,4,"{'theta': 8, 'gap_out': True}",0.976
+actuated,7,"{'theta': 12, 'gap_out': False}",1.084
+actuated,5,"{'theta': 8, 'gap_out': False}",1.111
+actuated,9,"{'theta': 16, 'gap_out': False}",1.127
+actuated,11,"{'theta': 24, 'gap_out': False}",1.214
+actuated,13,"{'theta': 32, 'gap_out': False}",1.284
+actuated,2,"{'theta': 4, 'gap_out': True}",1.333
+actuated,3,"{'theta': 4, 'gap_out': False}",1.353
+actuated,1,"{'theta': 2, 'gap_out': False}",2.003
+actuated,0,"{'theta': 2, 'gap_out': True}",2.024
+cocycle,4,"{'cycle': {'C_min': 40, 'rho_ref': 0.8}, 'max_extension_s': 20}",0.847
+cocycle,0,"{'cycle': {'C_min': 40, 'rho_ref': 0.6}, 'max_extension_s': 10}",0.917
+cocycle,1,"{'cycle': {'C_min': 30, 'rho_ref': 0.6}, 'max_extension_s': 10}",0.924
+cocycle,2,"{'cycle': {'C_min': 30, 'rho_ref': 0.8}, 'max_extension_s': 10}",0.924
+cocycle,3,"{'cycle': {'C_min': 30, 'rho_ref': 0.8}, 'max_extension_s': 0}",1.255
+comp,5,"{'theta': 12, 'kappa': 0.5, 'gap_out': True}",0.833
+comp,4,"{'theta': 12, 'kappa': 0.0, 'gap_out': True}",0.835
+comp,2,"{'theta': 8, 'kappa': 0.0, 'gap_out': True}",0.836
+comp,7,"{'theta': 16, 'kappa': 0.5, 'gap_out': True}",0.837
+comp,6,"{'theta': 16, 'kappa': 0.0, 'gap_out': True}",0.837
+comp,3,"{'theta': 8, 'kappa': 0.5, 'gap_out': True}",0.841
+comp,0,"{'theta': 4, 'kappa': 0.0, 'gap_out': True}",0.954
+comp,1,"{'theta': 4, 'kappa': 0.5, 'gap_out': True}",0.987
+fixed,ref,"{}",1.000

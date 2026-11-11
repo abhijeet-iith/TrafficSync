@@ -1,0 +1,8 @@
+{
+  "exp_id": "ABL_ablations",
+  "n_runs": 320,
+  "wall_s": 554.78,
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "platform": "Linux-6.18.44-fc-v338-x86_64-with-glibc2.39"
+}

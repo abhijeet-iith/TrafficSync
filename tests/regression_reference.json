@@ -1,0 +1,154 @@
+{
+ "config": {
+  "controllers": [
+   "fixed",
+   "actuated",
+   "comp",
+   "cocycle"
+  ],
+  "demands": [
+   "D_med",
+   "D_high"
+  ],
+  "info": "perfect_sensor",
+  "network": "grid2x2",
+  "seeds": [
+   0,
+   1
+  ],
+  "sim": {
+   "duration_s": 900,
+   "warmup_s": 300
+  }
+ },
+ "results": {
+  "D_high/actuated/0": {
+   "completed": 904.0,
+   "mean_delay": 48.04025423728814,
+   "mean_queue": 5.093541622161865,
+   "mean_stops": 1.7118644067796611,
+   "mean_travel_time": 106.58898305084746,
+   "throughput_vph": 5424.0
+  },
+  "D_high/actuated/1": {
+   "completed": 947.0,
+   "mean_delay": 70.61172901921132,
+   "mean_queue": 8.26604175567627,
+   "mean_stops": 1.756319514661274,
+   "mean_travel_time": 127.8665318503539,
+   "throughput_vph": 5682.0
+  },
+  "D_high/cocycle/0": {
+   "completed": 912.0,
+   "mean_delay": 51.09110169491525,
+   "mean_queue": 5.4630208015441895,
+   "mean_stops": 1.7658898305084745,
+   "mean_travel_time": 109.57415254237289,
+   "throughput_vph": 5472.0
+  },
+  "D_high/cocycle/1": {
+   "completed": 960.0,
+   "mean_delay": 64.80485338725985,
+   "mean_queue": 7.592604160308838,
+   "mean_stops": 1.686552072800809,
+   "mean_travel_time": 122.38119312436805,
+   "throughput_vph": 5760.0
+  },
+  "D_high/comp/0": {
+   "completed": 901.0,
+   "mean_delay": 49.13347457627118,
+   "mean_queue": 5.214478969573975,
+   "mean_stops": 1.7330508474576272,
+   "mean_travel_time": 107.58898305084746,
+   "throughput_vph": 5406.0
+  },
+  "D_high/comp/1": {
+   "completed": 953.0,
+   "mean_delay": 68.92618806875632,
+   "mean_queue": 8.05020809173584,
+   "mean_stops": 1.7684529828109201,
+   "mean_travel_time": 126.33468149646107,
+   "throughput_vph": 5718.0
+  },
+  "D_high/fixed/0": {
+   "completed": 914.0,
+   "mean_delay": 57.19703389830509,
+   "mean_queue": 6.242291450500488,
+   "mean_stops": 1.6239406779661016,
+   "mean_travel_time": 115.32627118644068,
+   "throughput_vph": 5484.0
+  },
+  "D_high/fixed/1": {
+   "completed": 952.0,
+   "mean_delay": 72.97876643073812,
+   "mean_queue": 8.53458309173584,
+   "mean_stops": 1.6814964610717897,
+   "mean_travel_time": 129.67542972699695,
+   "throughput_vph": 5712.0
+  },
+  "D_med/actuated/0": {
+   "completed": 573.0,
+   "mean_delay": 23.03035413153457,
+   "mean_queue": 1.5367708206176758,
+   "mean_stops": 1.6627318718381112,
+   "mean_travel_time": 84.17032040472175,
+   "throughput_vph": 3438.0
+  },
+  "D_med/actuated/1": {
+   "completed": 604.0,
+   "mean_delay": 24.26465661641541,
+   "mean_queue": 1.6745833158493042,
+   "mean_stops": 1.7018425460636515,
+   "mean_travel_time": 85.79396984924622,
+   "throughput_vph": 3624.0
+  },
+  "D_med/cocycle/0": {
+   "completed": 561.0,
+   "mean_delay": 21.967959527824622,
+   "mean_queue": 1.4421875476837158,
+   "mean_stops": 1.7824620573355818,
+   "mean_travel_time": 83.11804384485666,
+   "throughput_vph": 3366.0
+  },
+  "D_med/cocycle/1": {
+   "completed": 598.0,
+   "mean_delay": 22.381909547738694,
+   "mean_queue": 1.566979169845581,
+   "mean_stops": 1.7554438860971524,
+   "mean_travel_time": 83.94304857621441,
+   "throughput_vph": 3588.0
+  },
+  "D_med/comp/0": {
+   "completed": 573.0,
+   "mean_delay": 23.03035413153457,
+   "mean_queue": 1.5367708206176758,
+   "mean_stops": 1.6627318718381112,
+   "mean_travel_time": 84.17032040472175,
+   "throughput_vph": 3438.0
+  },
+  "D_med/comp/1": {
+   "completed": 604.0,
+   "mean_delay": 24.26465661641541,
+   "mean_queue": 1.6745833158493042,
+   "mean_stops": 1.7018425460636515,
+   "mean_travel_time": 85.79396984924622,
+   "throughput_vph": 3624.0
+  },
+  "D_med/fixed/0": {
+   "completed": 570.0,
+   "mean_delay": 29.96290050590219,
+   "mean_queue": 1.988437533378601,
+   "mean_stops": 1.7015177065767284,
+   "mean_travel_time": 90.78246205733558,
+   "throughput_vph": 3420.0
+  },
+  "D_med/fixed/1": {
+   "completed": 602.0,
+   "mean_delay": 29.34170854271357,
+   "mean_queue": 2.0645833015441895,
+   "mean_stops": 1.7252931323283083,
+   "mean_travel_time": 90.73031825795645,
+   "throughput_vph": 3612.0
+  }
+ }
+}
